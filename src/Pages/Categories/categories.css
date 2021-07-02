@@ -1,0 +1,11 @@
+.categories {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(4,1fr);
+    margin: 2em;
+    animation: fadeIn 1s ease forwards;
+    background: url(https://images.pexels.com/photos/5266276/pexels-photo-5266276.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+    background-size: cover;
+    background-repeat: no-repeat;
+}

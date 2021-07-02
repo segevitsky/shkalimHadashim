@@ -1,0 +1,32 @@
+.expense {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin: 2rem 1rem;
+    box-shadow: var(--bs);
+    padding: 1em;
+    min-width: 30vw;
+    background-color: white;
+}
+
+@keyframes showup {
+    0% { 
+        opacity: 0;
+        transform: translateX(500px);
+     }
+    100% { 
+        opacity: 1;
+        transform: translateX(0);
+     }
+}
+
+@keyframes getOut {
+    0% { 
+        opacity: 1;
+        transform: translateX(0);
+     }
+    100% { 
+        opacity: 0;
+        transform: translateX(500px);
+     }
+}

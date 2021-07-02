@@ -1,0 +1,30 @@
+.table {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.toggle-ex--btn {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    padding: .51rem;
+    border: 0;
+    background: sandybrown;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 1rem;
+    opacity: 1;
+    box-shadow: var(--bsT);
+}
+
+@media (min-width: 450px) {
+    .table {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 2em;
+    }
+
+    .toggle-ex--btn {
+        display: none;
+    }
+}

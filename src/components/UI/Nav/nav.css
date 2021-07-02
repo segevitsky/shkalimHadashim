@@ -1,0 +1,41 @@
+.nav {
+    display: flex;
+    flex-flow: column wrap;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, sandybrown, indianred);
+    z-index: 3;
+    width: 100%;
+    justify-content: center;
+    box-shadow: var(--bsT);
+    opacity: .9;
+}
+
+.nav ul {
+    color: white;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+}
+
+.nav li {
+    margin-bottom: 2em;
+    transition: all 350ms ease;
+}
+
+.nav li:hover {
+    transform: scale(1.2);
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.nav li a:hover {
+    color: goldenrod;
+}

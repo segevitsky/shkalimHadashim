@@ -1,0 +1,14 @@
+.welcome-header {
+    background: rgb(151, 227, 213);
+    padding: 0.15em 0;
+    color: white !important;
+    text-align: center;
+    font-size: 1.5em !important;
+    margin-bottom: 2em;
+}
+
+.welcome-desc {
+    text-align: center;
+    max-width: 75%;
+    margin: 0 auto;
+}

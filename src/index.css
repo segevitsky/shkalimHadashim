@@ -1,0 +1,65 @@
+:root {
+  --bs: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  --bsT: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  --clr-black: #000;
+  --clr-white: #fff;
+  --clr-beige: beige;
+  --clr-sandybrown: sandybrown;
+  --clr-indian: indianred;
+  --google: #1a73e8;
+
+  /* Design-kit */
+  --one: #F3F3F3;
+  --two: #250001;
+  --three: #590004;
+  --four: #A50104;
+  --five: #FCBA04;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  color: var(--clr-black);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+svg {
+  color: var(--clr-sandybrown);
+  transition: all 350ms ease-in-out;
+  cursor: pointer;
+}
+
+/* svg:hover {
+  transform: scale(1.5);
+  font-weight: bold;
+} */
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

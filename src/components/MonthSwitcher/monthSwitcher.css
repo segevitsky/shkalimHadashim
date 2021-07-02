@@ -1,0 +1,12 @@
+.month-switcher {
+    box-shadow: var(--bs);
+    padding: .5em 2em;
+    margin: 2em 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.month {
+    animation : fadeIn 1s ease-in forwards;
+}

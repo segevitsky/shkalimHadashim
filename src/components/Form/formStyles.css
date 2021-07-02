@@ -1,0 +1,155 @@
+.form {
+  margin-top: 2rem;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 16px #00000029;
+  opacity: 1;
+  padding: 2rem;
+  display: flex;
+  margin: 1em;
+  animation: showup 1s ease-in-out forwards;
+}
+
+.form-cont {
+  width: 100%;
+}
+
+@media (min-width: 450px) {
+  .form-cont {
+    max-width: fit-content;
+    flex: 1;
+  }
+}
+
+
+
+
+.form-container {
+  min-width: 35vw;
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.form-subheading {
+  text-align: center;
+
+}
+
+.select-input {
+  margin-top: 1rem;
+  border: 0;
+  border-bottom: 1px solid var(--clr-sandybrown)
+}
+
+.form input {
+  border: 0;
+  border: 1px solid sandybrown;
+  width: 95%;
+  outline: none;
+  margin-top: 2rem;
+  padding: .5rem .25rem .5rem 0;
+  border-radius: 25px;
+}
+
+::placeholder {
+  padding-right: 1rem;
+
+}
+
+
+.form-input-btn {
+  color: var(--clr-black);
+  padding: .75em 1em;
+  background: #FFA52E;
+  border: 0;
+  border-radius: 50px;
+  margin-top: 2rem;
+  margin: 1rem auto;
+  transition: all 350ms ease-in-out;
+  outline: none;
+}
+
+.form-input-btn:hover {
+  cursor: pointer;
+  background: linear-gradient(90deg,
+      rgb(39, 143, 255) 0%,
+      rgb(12, 99, 250) 100%);
+  transition: all 0.4s ease-out;
+}
+
+
+.form-inputs p,
+.terms,
+.constant-error {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #f00e0e;
+}
+
+
+
+
+.form-success {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 80px;
+  color: var(--main-color);
+}
+
+.form-checkbox {
+  display: flex;
+  margin-top: 1em;
+}
+
+.form-checkbox input {
+  width: auto;
+  margin-right: 1em;
+}
+
+.radio-buttons {
+  display: flex;
+  margin-top: 2em;
+}
+
+.categories-home {
+  display: none;
+}
+
+
+@media (min-width: 450px) {
+  .categories-home {
+    flex: 2;
+    margin: 1.25em;
+    box-shadow: var(--bs);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: bold;
+    font-size: 3em;
+    /* background: url(https://image.freepik.com/free-vector/big-data-analysis-concept-illustration-business-people-team-man-woman-near-big-screen-with-graphs-graph-chart_121223-1027.jpg); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn 1s ease-in-out forwards;
+    transition: all 350ms ease;
+    cursor: pointer;
+    background: url(https://images.pexels.com/photos/5561914/pexels-photo-5561914.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+    background-color: sandybrown;
+    background-blend-mode: lighten;
+  }
+
+  .categories-home:hover {
+    box-shadow: none;
+  }
+
+}
+
+.form-select {
+  border: 0;
+  border-bottom: 1px solid sandybrown;
+  width: 100%;
+}

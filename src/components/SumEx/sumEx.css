@@ -1,0 +1,61 @@
+.sum-income-out {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 30%;
+    background: #000000ba;
+    color: white;
+    left: 0;
+    right: 0;
+    padding-bottom: .5rem;
+    transition: all 1350ms ease-in-out;
+    height: 184px;
+}
+
+.sum-income-out>* {
+    margin-top: 1rem;
+}
+
+.sum-inout-full {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 30%;
+    background: #000000d4;
+    color: white;
+    left: 0;
+    right: 0;
+    padding-bottom: .5rem;
+    transition: all 350ms ease-in-out;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.sum-inout-full>* {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+}
+
+
+
+.sum-inout-full>.cashFlow {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid;
+    /* transition: all 1500ms ease-in; */
+}
+
+
+@media (min-width: 450px) {
+    .sum-income-out {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
+}

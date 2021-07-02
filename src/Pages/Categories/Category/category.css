@@ -1,0 +1,39 @@
+.category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* box-shadow: var(--bsT); */
+    transition: all 350ms ease-in;
+}
+
+
+.category:hover {
+    /* box-shadow: none; */
+}
+
+
+.category a {
+    color: sandybrown;
+    font-size: 1.25em;
+    letter-spacing: 1px;
+    text-shadow: var(--bsT);
+    text-decoration: none;
+}
+.category:nth-child(1) {
+color: black;
+grid-column:  1 / 4;
+}
+.category:nth-child(2) {
+    grid-column:  4 / 7;
+}
+.category:nth-child(3) {
+    grid-row: 2/3;
+    grid-column:  1 / 4;
+
+}
+
+.category:nth-child(5) {
+    grid-column:  5 / 7;
+
+}

@@ -1,0 +1,9 @@
+.header {
+    text-align: center;
+    background: sandybrown;
+    padding: 1em;
+    margin: 0;
+    color: white;
+    text-shadow: var(--bsT);
+    letter-spacing: 1.5px;
+}
