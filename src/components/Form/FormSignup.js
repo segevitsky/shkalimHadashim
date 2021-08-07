@@ -1,7 +1,5 @@
 import React, {useState ,useEffect} from "react";
 import validate from "./ValidateInfo";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import useForm from "../../hooks/useForm";
 import "./formStyles.css";
 import styled from 'styled-components';
@@ -9,6 +7,7 @@ import { getMonths } from "../api/oursAPI";
 
 const FormSignup = ({ submitForm, headline, tables, setShowForm }) => {
 	const [months, setMonths] = useState([]);
+	const [month, setMonth] = useState(new Date().getMonth());
 	
 	useEffect(() => {
 		(async function () {
@@ -29,7 +28,6 @@ const FormSignup = ({ submitForm, headline, tables, setShowForm }) => {
 		validate
 	);
 
-	// console.log(errors.constant);
 	const nameOptions = tables.map((el, i) => (
 		<option key={el + i}> {el} </option>
 	));
@@ -41,7 +39,7 @@ const FormSignup = ({ submitForm, headline, tables, setShowForm }) => {
 				<Headline> {headline} </Headline>
 				<label>
 					הזן חודש:
-					<Select style={{ marginRight: "1rem" }}> {months.map((el,i) => <option key={el.name + i}> { el.name } </option> )} </Select>
+					<Select name="monthName" onChange={handleChange} value={values.month} selected={nameOptions[7]} style={{ marginRight: "1rem" }}> {months.map((el,i) => <option key={el.name + i} > { el.name } </option> )} </Select>
 				</label>
 				<div className="form-inputs">
 					<label> בחר הוצאה או הכנסה: </label> <br></br>
@@ -120,8 +118,8 @@ export default FormSignup;
 const CloseBtn = styled.button`
 	color: sandybrown;
 	position: absolute;
-    top: -1.5rem;
-    right: -1.5rem;
+    top: -1.25rem;
+    right: -1.25rem;
 	padding: .25em .5em;
 `;
 

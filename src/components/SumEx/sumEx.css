@@ -8,8 +8,9 @@
     left: 0;
     right: 0;
     padding-bottom: .5rem;
-    transition: all 1350ms ease-in-out;
-    height: 184px;
+    transition: all 1s ease-in-out;
+    height: 115px;
+
 }
 
 .sum-income-out>* {
@@ -32,6 +33,7 @@
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
+    z-index: 3;
 }
 
 .sum-inout-full>* {

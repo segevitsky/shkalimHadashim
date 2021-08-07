@@ -6,32 +6,31 @@ import { getTables, getCashFlow } from "../api/oursAPI";
 import { reduce, creatingYearData, myFilter } from "../../utils/utils";
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
-import Plus from '../Plus/Plus';
+import Plus from "../Plus/Plus";
 import ours from "../api/ours";
 import "./Home.css";
 import SumEx from "../SumEx/SumEx";
-
 
 export default function Home() {
 	const [showForm, setShowForm] = useState(false);
 	const [things = [], setThings] = useState();
 	const [tables = [], setTables] = useState();
 	const [month, setMonth] = useState(new Date().getMonth() + 1 + "");
-	const [date] = useState(new Date());
+	const [date, setDate] = useState(new Date());
 	const [tableNames = [], setTableNames] = useState();
 	const [expenses, setExpenses] = useState([]);
 	const [incomes, setIncomes] = useState([]);
-	const [cashFlow, setCashFlow] = useState('');
+	const [cashFlow, setCashFlow] = useState("");
 	const [sumEx, setExSum] = useState(0);
 	const [sumIn, setInSum] = useState(0);
-	const history = useHistory()
-	const token = useSelector(state => state.auth.token);
+	const history = useHistory();
+	const token = useSelector((state) => state.auth.token);
 
 	useEffect(() => {
 		// if (token) { return } else {
 		// 	history.push("/login");
 		// }
-	},[history, token]);
+	}, [history, token]);
 
 	useEffect(() => {
 		(async function () {
@@ -46,7 +45,9 @@ export default function Home() {
 				console.log(cashFlow);
 				setCashFlow(cashFlow.data);
 
-				let thisYearData = allTables.map((el) => el["2021"]).map((el) => el["newYearEx"]);
+				let thisYearData = allTables
+					.map((el) => el["2021"])
+					.map((el) => el["newYearEx"]);
 				const thisMonthsData = thisYearData
 					.map((el) => el.filter(getDate))
 					.map((el) => el[0])
@@ -74,16 +75,17 @@ export default function Home() {
 	}, [date, month]);
 
 	const progressMonths = (e) => {
-		if (month === 12) return;
+		if (month === 12) {
+			setDate((prevDate) => +prevDate + 1);
+			setMonth(1);
+		}
 		setMonth((prevMonth) => {
 			console.log(+prevMonth + 1);
 			return +prevMonth + 1 + "";
 		});
 	};
 
-	const backMonths = (e) => {
-		// console.log(month - 1, "חודש קודם");
-		// debugger;
+	const backMonths = () => {
 		setMonth((prevMonth) => {
 			console.log(+prevMonth - 1);
 			return +prevMonth - 1 + "";
@@ -94,11 +96,8 @@ export default function Home() {
 		const item = things.filter((el) => el.id === id)[0];
 		let { monthNum } = item;
 		const yearExpenses = creatingYearData(item);
-		yearExpenses.filter(el => el.monthNum !== monthNum);
-		let newYearEx = yearExpenses.filter(el => el.monthNum !== monthNum)
-		// const newYearEx = yearExpenses.filter(
-		// 	(el) => el.monthNum !== "0" + item.monthNum
-		// );
+		yearExpenses.filter((el) => el.monthNum !== monthNum);
+		let newYearEx = yearExpenses.filter((el) => el.monthNum !== monthNum);
 		let itemsToRender = [];
 		if (expenses.includes(item)) {
 			itemsToRender = expenses.filter((el) => el.id !== id);
@@ -133,6 +132,8 @@ export default function Home() {
 			}
 
 			const newYearEx = creatingYearData(values);
+			console.log({ newYearEx });
+			debugger;
 			ours.patch(
 				process.env.REACT_APP_URL + `/tables/${values.name}/${year}.json/`,
 				{ newYearEx }
@@ -161,20 +162,19 @@ export default function Home() {
 		ours.patch(process.env.REACT_APP_URL + "/things.json", newThings);
 	};
 
-
-
 	return (
 		<Layout>
 			<div className="App">
-				{
-					showForm ? 
+				{showForm ? (
 					<Form
 						submit={handleSubmit}
 						headline="טופס הכנצות"
 						tables={tableNames}
 						setShowForm={setShowForm}
-					/> : <Plus showForm={() => setShowForm(true)}/>
-				}
+					/>
+				) : (
+					<Plus showForm={() => setShowForm(true)} />
+				)}
 				<Table
 					incomes={incomes}
 					expenses={expenses}
@@ -186,11 +186,11 @@ export default function Home() {
 					progressMonths={progressMonths}
 					backMonths={backMonths}
 					currentMonth={month}
-					setters={[setExpenses,setIncomes]}
+					setters={[setExpenses, setIncomes]}
 				/>
 				{/* <Sketch /> */}
 			</div>
-			<SumEx sumIn={sumIn} sumEx={sumEx} cashFlow={cashFlow}/>
+			<SumEx sumIn={sumIn} sumEx={sumEx} cashFlow={cashFlow} />
 		</Layout>
 	);
 }

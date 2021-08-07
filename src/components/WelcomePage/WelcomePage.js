@@ -11,6 +11,7 @@ export default function WelcomePage() {
 	const passwordRef = useRef();
 	const { login, signup } = useAuth();
 	const [error, setError] = useState("");
+	const [errorNum, setErrorNum] = useState(0);
 	const [loading, setLoading] = useState(false);
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -27,7 +28,11 @@ export default function WelcomePage() {
 			dispatch(saveUserToken(credCheck?.user?.uid))
 			history.push("/");
 		} catch {
+			if ( errorNum  > 1) {
+				history.push('/signup')
+			}
 			setError("שגיאה אבא, בדוק את השם משתמש והסיסמא");
+			setErrorNum((prevS) => prevS + 1);
 		}
 
 		setLoading(false);

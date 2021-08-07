@@ -41,7 +41,7 @@ export default function MonthSwitcher({
 					transition: "all 350ms ease",
 				}}
 			/>
-			<p className="month"> {monthName}</p>
+			<p className="month"> {monthName} { date.getFullYear() } </p>
 			<FontAwesomeIcon
 				onClick={progressMonths}
 				icon={faArrowLeft}

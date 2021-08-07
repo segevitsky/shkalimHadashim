@@ -9,6 +9,7 @@ const useForm = (callback, validate) => {
 		name: "",
 		amount: "",
 		constant: "",
+		monthNum: "",
 	});
 
 	const [isSubmitting, setIsSubmitting] = useState(false);
