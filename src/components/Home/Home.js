@@ -92,12 +92,7 @@ export default function Home() {
 		});
 	};
 
-	const deleteExpense = async (id) => {
-		const item = things.filter((el) => el.id === id)[0];
-		let { monthNum } = item;
-		const yearExpenses = creatingYearData(item);
-		yearExpenses.filter((el) => el.monthNum !== monthNum);
-		let newYearEx = yearExpenses.filter((el) => el.monthNum !== monthNum);
+	const setNewExpensesAndIncomesAfterDelete = (item, id) => {
 		let itemsToRender = [];
 		if (expenses.includes(item)) {
 			itemsToRender = expenses.filter((el) => el.id !== id);
@@ -108,7 +103,18 @@ export default function Home() {
 			setIncomes(itemsToRender);
 			setInSum((prevSum) => prevSum - item["amount"]);
 		}
+	};
 
+	const deleteExpense = async (id) => {
+		const item = things.filter((el) => el.id === id)[0];
+		let { monthNum } = item;
+		const yearExpenses = creatingYearData(item);
+		yearExpenses.filter((el) => el.monthNum !== monthNum);
+		let newYearEx = yearExpenses.filter((el) => el.monthNum !== monthNum);
+
+		setNewExpensesAndIncomesAfterDelete(item, id);
+		console.log(process.env.REACT_APP_URL + `/tables/${item.name}/2021.json/`);
+		debugger;
 		ours
 			.patch(process.env.REACT_APP_URL + `/tables/${item.name}/2021.json/`, {
 				newYearEx,
@@ -171,6 +177,10 @@ export default function Home() {
 						headline="טופס הכנצות"
 						tables={tableNames}
 						setShowForm={setShowForm}
+						progressMonths={progressMonths}
+						backMonths={backMonths}
+						date={date}
+						currentMonth={month}
 					/>
 				) : (
 					<Plus showForm={() => setShowForm(true)} />

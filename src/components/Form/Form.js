@@ -4,7 +4,16 @@ import FormSignup from "./FormSignup";
 import { history, useHistory } from "react-router-dom";
 import "./formStyles.css";
 
-const Form = ({ submit, headline, tables,setShowForm }) => {
+const Form = ({
+	submit,
+	headline,
+	tables,
+	setShowForm,
+	progressMonths,
+	backMonths,
+	date,
+	currentMonth,
+}) => {
 	const history = useHistory();
 
 	const navigationHandler = () => {
@@ -13,11 +22,20 @@ const Form = ({ submit, headline, tables,setShowForm }) => {
 	return (
 		<>
 			{/* <div className="form-container"> */}
-				<FormSignup submitForm={submit} headline={headline} tables={tables} setShowForm={setShowForm}/>
-				{/* <div className="categories-home" onClick={navigationHandler}> */}
-					{/* {" "} */}
-					{/* קטגוריות{" "} */}
-				{/* </div> */}
+			<FormSignup
+				progressMonths={progressMonths}
+				backMonths={backMonths}
+				submitForm={submit}
+				headline={headline}
+				tables={tables}
+				setShowForm={setShowForm}
+				date={date}
+				currentMonth={currentMonth}
+			/>
+			{/* <div className="categories-home" onClick={navigationHandler}> */}
+			{/* {" "} */}
+			{/* קטגוריות{" "} */}
+			{/* </div> */}
 			{/* </div> */}
 		</>
 	);

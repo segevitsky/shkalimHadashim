@@ -6,8 +6,8 @@ import "./monthSwitcher.css";
 
 export default function MonthSwitcher({
 	date,
-	progressMonths,
-	backMonths,
+	progressMonths = "",
+	backMonths = "",
 	currentMonth,
 }) {
 	const [months, setMonths] = useState([]);
@@ -41,7 +41,10 @@ export default function MonthSwitcher({
 					transition: "all 350ms ease",
 				}}
 			/>
-			<p className="month"> {monthName} { date.getFullYear() } </p>
+			<p className="month">
+				{" "}
+				{monthName} {date.getFullYear()}{" "}
+			</p>
 			<FontAwesomeIcon
 				onClick={progressMonths}
 				icon={faArrowLeft}
