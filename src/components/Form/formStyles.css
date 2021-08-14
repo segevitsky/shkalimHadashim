@@ -48,12 +48,11 @@
 
 .form input {
   border: 0;
-  border: 1px solid sandybrown;
+  border-bottom: 1px solid sandybrown;
   width: 95%;
   outline: none;
   margin-top: 2rem;
   padding: .5rem .25rem .5rem 0;
-  border-radius: 25px;
 }
 
 ::placeholder {
@@ -63,24 +62,16 @@
 
 
 .form-input-btn {
-  color: var(--clr-black);
+  /* color: var(--clr-black);
   padding: .75em 1em;
-  background: #FFA52E;
   border: 0;
   border-radius: 50px;
   margin-top: 2rem;
   margin: 1rem auto;
   transition: all 350ms ease-in-out;
-  outline: none;
+  outline: none; */
 }
 
-.form-input-btn:hover {
-  cursor: pointer;
-  background: linear-gradient(90deg,
-      rgb(39, 143, 255) 0%,
-      rgb(12, 99, 250) 100%);
-  transition: all 0.4s ease-out;
-}
 
 
 .form-inputs p,
@@ -88,7 +79,6 @@
 .constant-error {
   font-size: 0.8rem;
   margin-top: 0.5rem;
-  color: #f00e0e;
 }
 
 

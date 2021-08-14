@@ -32,9 +32,8 @@ export default function Expense(props) {
 		formatDate = date.toISOString().slice(0, 10);
 	}
 
-
-	console.log(expenses, id)
-	const thisExpnese = expenses.filter(el => el.id === id)[0];
+	console.log(expenses, id);
+	const thisExpnese = expenses.filter((el) => el.id === id)[0];
 	return (
 		<>
 			<li
@@ -46,7 +45,7 @@ export default function Expense(props) {
 			>
 				<p> {name} </p>
 				<p> {amount} </p>
-				<p> {formatDate} </p>
+				{/* <p> {formatDate} </p> */}
 
 				<FontAwesomeIcon
 					icon={faPencilAlt}

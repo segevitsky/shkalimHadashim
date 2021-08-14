@@ -114,7 +114,6 @@ export default function Home() {
 
 		setNewExpensesAndIncomesAfterDelete(item, id);
 		console.log(process.env.REACT_APP_URL + `/tables/${item.name}/2021.json/`);
-		debugger;
 		ours
 			.patch(process.env.REACT_APP_URL + `/tables/${item.name}/2021.json/`, {
 				newYearEx,
@@ -124,22 +123,21 @@ export default function Home() {
 
 	const handleSubmit = (values) => {
 		const year = values?.date?.toLocaleDateString()?.slice(4);
-		try {
-			let newExpenses = [...expenses];
-			let newIncomes = [...incomes];
-			if (values.type === "הוצאה") {
-				newExpenses.push(values);
-				setExSum((prevSum) => prevSum + +values.amount);
-				setExpenses(newExpenses);
-			} else {
-				newIncomes.push(values);
-				setInSum((prevSum) => prevSum + +values.amount);
-				setIncomes(newIncomes);
-			}
+		let newExpenses = [...expenses];
+		let newIncomes = [...incomes];
+		if (values.type === "הוצאה") {
+			newExpenses.push(values);
+			setExSum((prevSum) => prevSum + +values.amount);
+			setExpenses(newExpenses);
+		} else {
+			newIncomes.push(values);
+			setInSum((prevSum) => prevSum + +values.amount);
+			setIncomes(newIncomes);
+		}
 
-			const newYearEx = creatingYearData(values);
+		const newYearEx = creatingYearData(values);
+		try {
 			console.log({ newYearEx });
-			debugger;
 			ours.patch(
 				process.env.REACT_APP_URL + `/tables/${values.name}/${year}.json/`,
 				{ newYearEx }

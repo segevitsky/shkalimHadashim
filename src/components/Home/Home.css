@@ -59,8 +59,8 @@ label {
 }
 
 .form button {
-    border: 0;
-    /* padding: .5em 2.5em; */
+    /* border: 0;
+    padding: .5em 2.5em;
     background-color: sandybrown;
     color: white;
     text-align: center;
@@ -68,7 +68,7 @@ label {
     box-shadow: var(--bsT);
     outline: none;
     cursor: pointer;
-    margin: 2rem;
+    margin: 2rem; */
 }
 
 .charts-cont {

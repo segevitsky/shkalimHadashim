@@ -9,6 +9,7 @@ export default function MonthSwitcher({
 	progressMonths = "",
 	backMonths = "",
 	currentMonth,
+	setMonthNum = "",
 }) {
 	const [months, setMonths] = useState([]);
 	const [monthName, setMonthName] = useState("");
@@ -34,7 +35,12 @@ export default function MonthSwitcher({
 		<div className="month-switcher">
 			<FontAwesomeIcon
 				icon={faArrowRight}
-				onClick={backMonths}
+				onClick={() => {
+					backMonths();
+					if (setMonthNum) {
+						setMonthNum(+currentMonth - 1);
+					}
+				}}
 				style={{
 					cursor: "pointer",
 					color: "sandybrown",
@@ -46,7 +52,12 @@ export default function MonthSwitcher({
 				{monthName} {date.getFullYear()}{" "}
 			</p>
 			<FontAwesomeIcon
-				onClick={progressMonths}
+				onClick={() => {
+					progressMonths();
+					if (setMonthNum) {
+						setMonthNum(+currentMonth + 1);
+					}
+				}}
 				icon={faArrowLeft}
 				style={{
 					cursor: "pointer",

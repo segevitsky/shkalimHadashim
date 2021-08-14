@@ -15,6 +15,7 @@
     letter-spacing: 1rem;
     opacity: 1;
     box-shadow: var(--bsT);
+    margin-bottom: 1.75rem;
 }
 
 @media (min-width: 450px) {

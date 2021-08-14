@@ -1,15 +1,15 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-const useForm = (callback, validate) => {
+const useForm = (callback, validate, currentMonth) => {
 	const [values, setValues] = useState({
 		id: uuidv4(),
 		date: new Date(),
-		type: "",
+		type: "הכנסה",
 		name: "",
 		amount: "",
-		constant: "",
-		monthNum: "",
+		constant: "רגילה",
+		monthNum: +currentMonth,
 	});
 
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,8 +33,6 @@ const useForm = (callback, validate) => {
 	};
 
 	const handleSubmit = (e) => {
-		console.log(e);
-		console.log(e.which || e.keyCode || 0);
 		e.preventDefault();
 		setErrors(validate(values));
 		setIsSubmitting(true);
@@ -46,12 +44,12 @@ const useForm = (callback, validate) => {
 				name: "",
 				amount: "",
 				date: new Date(),
-				constant: "",
+				constant: "true",
 			});
 		}
 	};
 
-	return { handleChange, handleSubmit, values, errors };
+	return { handleChange, handleSubmit, values, setValues, errors };
 };
 
 export default useForm;

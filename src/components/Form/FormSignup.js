@@ -5,6 +5,7 @@ import "./formStyles.css";
 import styled from "styled-components";
 import { getMonths } from "../api/oursAPI";
 import MonthSwitcher from "../MonthSwitcher/MonthSwitcher";
+import Switches from "../UI/Switches/Switches";
 
 const FormSignup = ({
 	submitForm,
@@ -17,8 +18,6 @@ const FormSignup = ({
 	currentMonth,
 }) => {
 	const [months, setMonths] = useState([]);
-	const [month, setMonth] = useState(new Date().getMonth());
-	console.log({ month });
 	useEffect(() => {
 		(async function () {
 			try {
@@ -33,15 +32,25 @@ const FormSignup = ({
 		})();
 	}, []);
 
-	const { handleChange, handleSubmit, values, errors } = useForm(
+	const { handleChange, handleSubmit, values, setValues, errors } = useForm(
 		submitForm,
-		validate
+		validate,
+		currentMonth
 	);
+
+	console.log({ setValues });
 
 	const nameOptions = tables.map((el, i) => (
 		<option key={el + i}> {el} </option>
 	));
 
+	const saveNewValues = (value, inputName) => {
+		setValues({ ...values, [inputName]: value });
+	};
+
+	const setMonthNum = (currentMonth) => {
+		setValues({ ...values, monthNum: currentMonth });
+	};
 	return (
 		// <div className="form-cont">
 		<form
@@ -57,21 +66,16 @@ const FormSignup = ({
 				currentMonth={currentMonth}
 				progressMonths={progressMonths}
 				backMonths={backMonths}
+				setMonthNum={setMonthNum}
 			/>
 			<div className="form-inputs">
-				<label> בחר הוצאה או הכנסה: </label> <br></br>
-				<select
-					className="select-input"
-					onChange={handleChange}
-					name="type"
-					value={values.type}
-				>
-					<option> ----- </option>
-					<option> הכנסה </option>
-					<option> הוצאה </option>
-				</select>
-				<br></br>
-				{errors.type && <p> {errors.type} </p>}
+				<Switches
+					nameOne="הכנסה"
+					nameTwo="הוצאה"
+					saveSelected={saveNewValues}
+					type="type"
+					margin={false}
+				/>
 			</div>
 			<div className="form-inputs">
 				<input
@@ -103,24 +107,17 @@ const FormSignup = ({
 				{errors.amount && <p>{errors.amount}</p>}
 			</div>
 
-			<div className="radio-buttons">
-				<select
-					onChange={handleChange}
-					placeholder="קבועה"
-					name="constant"
-					className="form-select"
-					id="kind"
-					value={values.constant}
-				>
-					<option value="empty"> ---- </option>
-					<option value="constant"> רגילה </option>
-					<option value="oneTime"> חד פעמית </option>
-				</select>
-			</div>
+			<Switches
+				nameOne="רגילה"
+				nameTwo="קבועה"
+				saveSelected={saveNewValues}
+				type="constant"
+				margin={true}
+			/>
 			{errors.constant && <p className="constant-error">{errors.constant}</p>}
-			<button className="form-input-btn" type="submit" onSubmit={handleSubmit}>
+			<Button className="form-input-btn" type="submit" onSubmit={handleSubmit}>
 				הוסף
-			</button>
+			</Button>
 		</form>
 		// </div>
 	);
@@ -134,6 +131,15 @@ const CloseBtn = styled.button`
 	top: -1.25rem;
 	right: -1.25rem;
 	padding: 0.25em 0.5em;
+	border: 0;
+	background-color: sandybrown;
+	color: white;
+	text-align: center;
+	align-self: center;
+	box-shadow: var(--bsT);
+	outline: none;
+	cursor: pointer;
+	margin: 2rem;
 `;
 
 const Headline = styled.h3`
@@ -141,7 +147,20 @@ const Headline = styled.h3`
 	margin-top: 1.25rem;
 `;
 
-const Select = styled.select`
+const Button = styled.button`
+	border: 1px solid black;
 	border: 0;
-	border-bottom: 1px dashed sandybrown;
+	padding: 0.5em 4.5em;
+	background-color: white;
+	color: black;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(26, 53, 71, 0.07);
+	text-align: center;
+	align-self: center;
+	outline: none;
+	cursor: pointer;
+	margin: 2rem;
+
+	&:hover {
+		box-shadow: 2px 2px rgba(0, 0, 0, 0.19);
+	}
 `;

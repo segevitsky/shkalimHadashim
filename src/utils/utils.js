@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from "uuid";
 // import { complement } from "ramda";
-import ours from '../../src/components/api/ours';	
+import ours from "../../src/components/api/ours";
 
 export const reduce = (arr) =>
 	arr.reduce((acc, el) => {
@@ -65,13 +65,10 @@ export const handleSubmitionCase = {
 };
 
 export const creatingYearData = (obj) => {
-	if (obj.constant === "constant" || obj.constant === true) {
+	if (obj.constant === "קבועה" || obj.constant === true) {
 		return handleSubmitionCase.permanent(obj);
 	}
-	if (obj.constant === "changing") {
-		return handleSubmitionCase.changing(obj);
-	}
-	if (obj.constant === "oneTime") {
+	if (obj.constant === "רגילה") {
 		return handleSubmitionCase.oneTime(obj);
 	}
 };
@@ -88,8 +85,13 @@ export const generColor = () => {
 };
 
 export const sendEditedExpenseToServer = async (obj) => {
-	const {name, monthNum} = obj
-	const {data} = await ours.get(`${process.env.REACT_APP_URL}/tables/${name}/2021/newYearEx.json`);
-	const itemsIndex = data.findIndex(el => el.monthNum === monthNum);
-	ours.patch(`${process.env.REACT_APP_URL}/tables/${name}/2021/newYearEx/${itemsIndex}.json`, obj);
-}
+	const { name, monthNum } = obj;
+	const { data } = await ours.get(
+		`${process.env.REACT_APP_URL}/tables/${name}/2021/newYearEx.json`
+	);
+	const itemsIndex = data.findIndex((el) => el.monthNum === monthNum);
+	ours.patch(
+		`${process.env.REACT_APP_URL}/tables/${name}/2021/newYearEx/${itemsIndex}.json`,
+		obj
+	);
+};
