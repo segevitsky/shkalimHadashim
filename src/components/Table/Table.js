@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Expenses from "../Expenses/Expenses";
 import MonthSwitcher from "../MonthSwitcher/MonthSwitcher";
 import PieChart from "../UI/Charts/PieChart/PieChart";
+import styled from "styled-components";
 import "./table.css";
 
 export default function Table({
@@ -14,7 +15,7 @@ export default function Table({
 	progressMonths,
 	backMonths,
 	currentMonth,
-	setters
+	setters,
 }) {
 	const [ex, setEx] = useState(false);
 	return (
@@ -32,42 +33,35 @@ export default function Table({
 				</button>
 
 				{!ex && (
-					<div style={{ height: "300px" }}>
+					<ExpensesCont>
 						<Expenses
 							expenses={incomes}
-							all={[expenses,incomes]}
+							all={[expenses, incomes]}
 							deleteExpense={deleteExpense}
 							submit={handleSubmit}
 							edit={edit}
 							setters={setters}
 						/>
-						<PieChart
-							data={incomes}
-							className="expenses-chart"
-							style={{ marginBottom: "3rem" }}
-							className="pie"
-						/>
-					</div>
+					</ExpensesCont>
 				)}
 
 				{ex && (
-					<div style={{ height: "300px" }}>
+					<ExpensesCont>
 						<Expenses
 							expenses={expenses}
-							all={[expenses,incomes]}
+							all={[expenses, incomes]}
 							deleteExpense={deleteExpense}
 							submit={handleSubmit}
 							edit={edit}
 							setters={setters}
 						/>
-						<PieChart
-							data={expenses}
-							className="incomes-chart"
-							style={{ marginBottom: "3rem" }}
-						/>
-					</div>
+					</ExpensesCont>
 				)}
 			</div>
 		</>
 	);
 }
+
+const ExpensesCont = styled.div`
+	height: calc(100% + 10rem);
+`;
